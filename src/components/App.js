@@ -1,5 +1,6 @@
 import React from 'react';
 import Doc from './Doc.js';
+import {tagsJSON, rawContent} from '../sample_doc.js';
 
 
 const style = {
@@ -14,8 +15,9 @@ const style = {
 
 }
 
-const sample = `This is an interactive demonstration of the CSS3 flexbox layout model. Change the properties of the container to see how it affects the layout of the children! You can also edit flex properties for individual children. Click a child to make it editable. There is an accompanying blog post here, and more info on flexbox can be found here.`;
-const tags = [
+const sample = rawContent || 'This is an example';
+
+const tags = JSON.parse(tagsJSON) || [
   [{color:'white'}, {color:'white'}, {color: 'yellow'}],
   [{color:'white'}, {text:'loc', color:'tomato'}, {color: 'yellow'}],
   [{text: 'org', color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
