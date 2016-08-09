@@ -1,6 +1,7 @@
 import React from 'react';
 import Doc from './Doc.js';
-import {tagsJSON, rawContent} from '../sample_doc.js';
+import {rawTokens} from '../raw_tokens.js';
+import {taggedWords} from '../coloured_words.js';
 
 
 const style = {
@@ -15,9 +16,9 @@ const style = {
 
 }
 
-const sample = rawContent || 'This is an example';
 
-const tags = JSON.parse(tagsJSON) || [
+
+const tags = taggedWords[0] || [
   [{color:'white'}, {color:'white'}, {color: 'yellow'}],
   [{color:'white'}, {text:'loc', color:'tomato'}, {color: 'yellow'}],
   [{text: 'org', color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
@@ -98,7 +99,7 @@ class App extends React.Component {
       <div id="app" style={style}>
         <Doc
           showTagInfo= {this.showTagInfo}
-          tokens={sample.split(' ')}
+          tokens={rawTokens[0]}
           tags={tags}/>
         {
           this.state.tagsSelected.map((t) => (JSON.stringify(t)))
