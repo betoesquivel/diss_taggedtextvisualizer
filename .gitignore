@@ -36,3 +36,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+100_parsed_from_stanford.jsonl
+coloured_stanford.jsonl
+coloured_tagme.jsonl
+coloured_wikifier.jsonl
+coloured_words.jsonl
+raw_tokens.json
