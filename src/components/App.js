@@ -2,11 +2,10 @@ import React from 'react';
 import Doc from './Doc.js';
 import {rawTokens} from '../raw_tokens.js';
 import {taggedWords} from '../coloured_words.js';
+import TagInfo from './TagInfo.js';
 
 
 const style = {
-
-  backgroundColor: 'tomato',
 
   display: 'flex',
   flexDirection: 'column',
@@ -16,71 +15,7 @@ const style = {
 
 }
 
-
-
-const tags = taggedWords[0] || [
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {text:'loc', color:'tomato'}, {color: 'yellow'}],
-  [{text: 'org', color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'white'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {text:'per', color:'tomato'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'white'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'white'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'white'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'white'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'white'}],
-  [{color:'white'}, {color:'white'}, {color: 'white'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'white'}],
-  [{color:'white'}, {color:'white'}, {color: 'white'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-  [{color:'white'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'tomato'}, {color: 'yellow'}],
-  [{color:'royalblue'}, {color:'white'}, {color: 'yellow'}],
-];
-
+const tags = taggedWords[0];
 class App extends React.Component {
 
   constructor() {
@@ -102,7 +37,14 @@ class App extends React.Component {
           tokens={rawTokens[0]}
           tags={tags}/>
         {
-          this.state.tagsSelected.map((t) => (JSON.stringify(t)))
+          this.state.tagsSelected.map((t) => {
+            return (
+              <TagInfo
+                color={ t.color }
+                tag={ t }
+              />
+            );
+          })
         }
       </div>
     );
