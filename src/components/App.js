@@ -15,31 +15,36 @@ const style = {
 
 }
 
-const tags = taggedWords[0];
+const tags = taggedWords;
 class App extends React.Component {
 
   constructor() {
     super();
     this.showTagInfo = this.showTagInfo.bind(this);
-    this.state = { tagsSelected: [] };
+    this.state = { tagsSelected: [], tagIndex: 0, wordIndex:-1 };
   }
 
   showTagInfo(e, key) {
     console.log(key);
-    this.setState({tagsSelected: tags[key]});
+    this.setState({
+      tagsSelected: tags[this.state.tagIndex][key],
+      wordIndex: key
+    });
   }
 
   render () {
     return (
       <div id="app" style={style}>
         <Doc
+          wordIndex= {this.state.wordIndex}
           showTagInfo= {this.showTagInfo}
-          tokens={rawTokens[0]}
-          tags={tags}/>
+          tokens={rawTokens[this.state.tagIndex]}
+          tags={tags[this.state.tagIndex]}/>
         {
-          this.state.tagsSelected.map((t) => {
+          this.state.tagsSelected.map((t, i) => {
             return (
               <TagInfo
+                key={i}
                 color={ t.color }
                 tag={ t }
               />

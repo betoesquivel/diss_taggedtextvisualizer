@@ -21,7 +21,17 @@ class Word extends React.Component {
     return (
       <div >
         <span onClick={(e) => p.showTagInfo(e, p.index)} style={style}>
-          {p.word} &nbsp;
+          {p.selected ? 
+            <strong>
+              { p.word }
+            &nbsp;
+            </strong>
+            :
+            <span>
+              { p.word }
+              &nbsp;
+            </span>
+          } 
           {p.tags ? 
             p.tags.map( (t) => (
               <ColorLine 

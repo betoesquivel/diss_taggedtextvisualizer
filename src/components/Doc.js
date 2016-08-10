@@ -27,6 +27,7 @@ class Doc extends React.Component {
           p.tokens.map((tok, i) => {
             return (
               <Word
+                selected={ p.wordIndex === i }
                 key={i}
                 index={i}
                 word={tok}

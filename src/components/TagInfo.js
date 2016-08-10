@@ -20,7 +20,7 @@ class TagInfo extends React.Component {
     const {
       'surface-form': stanfordSurfaceForm,
       'spot': tagmeSurfaceForm,
-      'secTitle': wikifierSurfaceForm,
+      'wikifier-surface-form': wikifierSurfaceForm,
     } = tag;
 
     if (stanfordSurfaceForm) {
@@ -29,8 +29,8 @@ class TagInfo extends React.Component {
       } = tag;
       return (
         <div>
-          <h2> {stanfordSurfaceForm} </h2>
-          <h3> {type} </h3>
+          <h2> Surface: {stanfordSurfaceForm} </h2>
+          <h3> Type: {type} </h3>
         </div>
       )
     } else if (tagmeSurfaceForm) {
@@ -39,7 +39,7 @@ class TagInfo extends React.Component {
       } = tag;
       return (
         <div>
-          <h2> {tagmeSurfaceForm} </h2>
+          <h2> Surface: {tagmeSurfaceForm} </h2>
           <strong>Categories: <span> {categories.join()} </span></strong>
           <p>
             {
@@ -56,12 +56,13 @@ class TagInfo extends React.Component {
     } else if (wikifierSurfaceForm) {
       const {
         dbPediaIri,
+        secTitle,
         'dbPediaTypes': categories
       } = tag;
       return (
         <div>
-          <h2> {wikifierSurfaceForm} </h2>
-          <h3> {dbPediaIri} </h3>
+          <h2> Surface: {wikifierSurfaceForm} </h2>
+          <h3> Title: {secTitle} </h3>
           <strong>Categories: <span> {categories.join()} </span></strong>
           <p>
             {
