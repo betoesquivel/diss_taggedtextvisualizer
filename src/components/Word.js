@@ -33,8 +33,9 @@ class Word extends React.Component {
             </span>
           } 
           {p.tags ? 
-            p.tags.map( (t) => (
+            p.tags.map( (t, i) => (
               <ColorLine 
+                key={i}
                 showTagInfo={p.showTagInfo}
                 text={t.text}
                 color={t.color}/>
